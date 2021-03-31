@@ -91,7 +91,7 @@ number of researchers.
 
 There is a lot of detail about these two tags that can’t all be explored
 here, but the table below summarizes the major differences. [<u>Contact
-Motus</u>](https://motus.org/selection-guide/contact), or the tag
+Motus</u>](https://motus.org/contact), or the tag
 providers above for more information.
 
 <table>
@@ -99,13 +99,13 @@ providers above for more information.
 <tr class="header">
 <th></th>
 <th><p><a href="https://www.lotek.com/products/nanotags/"><strong><u>Lotek Nanotag</u></strong></a></p>
-<p><img src="media\image4.jpg" style="width:1.14063in;height:1.14063in" alt="Lotek Nanotag" /></p></th>
+<p><img src="media/lotek-nanotag.jpg" style="width:100px;" alt="Lotek Nanotag" /></p></th>
 <th><p><strong><u>Lotek Nanotag Solar</u></strong></p>
-<p><img src="media\image3.jpg" style="width:1.07813in;height:1.07813in" alt="Lotek Nanotag Solar" /></p></th>
+<p><img src="media/lotek-nanotag-solar.jpg" style="width:100px;" alt="Lotek Nanotag Solar" /></p></th>
 <th><p><strong><u>CTT LifeTags</u></strong></p>
-<p><img src="media\image9.png" style="width:1.05729in;height:1.05729in" alt="CTT LifeTags" /></p></th>
+<p><img src="media/ctt-lifetag.png" style="width:100px;" alt="CTT LifeTags" /></p></th>
 <th><p><strong><u>CTT PowerTags</u></strong></p>
-<p><img src="media\image10.png" style="width:1.14063in;height:1.14063in" alt="CTT PowerTags" /></p></th>
+<p><img src="media/ctt-powertag.png" style="width:100px;" alt="CTT PowerTags" /></p></th>
 </tr>
 </thead>
 <tbody>
@@ -213,12 +213,7 @@ providers above for more information.
 <td><p>5% for 20+</p>
 <p>10% for 30+</p></td>
 </tr>
-<tr class="odd">
-<td><strong>* This number is calculated by multiplying the number of unique ID’s emitted by Lotek tags (517) with the number of unique burst intervals available (70). These burst intervals range from 2.3 to 39.7 seconds, which corresponds to the number of primes between 23 and 397 such that no two burst intervals overlap with one another.</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
+
+<strong>* This number is calculated by multiplying the number of unique ID’s emitted by Lotek tags (517) with the number of unique burst intervals available (70). These burst intervals range from 2.3 to 39.7 seconds, which corresponds to the number of primes between 23 and 397 such that no two burst intervals overlap with one another.</strong>

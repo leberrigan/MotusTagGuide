@@ -4,7 +4,7 @@
 
 ## Manual tracking basics
 
-\[placeholder\]
+Coming soon...
 
 ## Retrieving lost tags
 

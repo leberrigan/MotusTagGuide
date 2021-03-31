@@ -38,7 +38,7 @@ A tag pulse consists of a single, 20 millisecond (ms) long radio
 transmission sent by the tag. Individual pulses are the raw data that
 SensorGnome receivers record.
 
-<img src="media\image1.png" style="width:6.3in;height:1.67495in" />
+![Pulse example](media/pulse.png)
 
 ### Pulse Intervals and Bursts
 
@@ -49,7 +49,7 @@ making a **burst**. The pulse interval is what we use to encode the
 allowing for just 1.5 ms of variation summed across all pulse intervals
 in a burst.
 
-<img src="media\image5.png" style="width:4.5in;height:1.72711in" />
+![Burst example](media/burst.png)
 
 *Note: these pulse intervals do not reflect properties of real tags are
 intended for demonstration purposes only.*
@@ -63,11 +63,7 @@ The burst interval and **Lotek Tag ID** combined are used to encode the
 **Motus Tag ID**. To avoid ambiguous detections, burst intervals cannot
 be integer multiples of one another. Therefore, all burst intervals must
 be *prime factors.* Keep in mind there must be two successive bursts to
-measure the burst interval and associate a **Motus Tag ID**, but
-[<u>some bursts can be
-skipped.</u>](https://docs.google.com/document/d/1IIXoSF32fBOuva3-WZXm1bRuG_08kAFV/edit#heading=h.3znysh7)
-Bursts are measured to a high level of precision, allowing for [<u>just
-4 ms of
-‘slop’.</u>](https://docs.google.com/document/d/1IIXoSF32fBOuva3-WZXm1bRuG_08kAFV/edit#heading=h.2et92p0)
+measure the burst interval and associate a **Motus Tag ID**, but [some bursts can be skipped.](tag-aliasing#number-of-skipped-bursts)
+Bursts are measured to a high level of precision, allowing for [just 4 ms of ‘slop’.](tag-aliasing#burst-interval-slop)
 
-<img src="media\image8.png" style="width:4.55in;height:1.50271in" />
+![Interval example](media/interval.png)

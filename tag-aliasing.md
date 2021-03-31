@@ -7,7 +7,7 @@ To understand tag aliasing, it is important to understand how tags
 encode their unique ID and how we interpret the signals they produce.
 This document only refers to Lotek NanoTags as we have not had reports
 of aliasing with CTT tags. Before reading this section, make sure you
-have a solid understanding of [<u>How tags work</u>](#_gaa1klaz85r).
+have a solid understanding of [How tags work](how-tags-work).
 
 Tag aliasing can occur when multiple real tags are transmitting tag
 pulses at the same Motus station and over the same period of time. An
@@ -34,11 +34,9 @@ where another tag with the same Lotek ID happens to be.
 -   Multiple real tags with the **same Lotek Tag ID** are detected.
 
 -   Aliased tags also have the **same Lotek Tag ID**, but a **different
-    > burst interval**.
+ burst interval**.
 
-<img src="media\image7.png" style="width:6.30208in;height:1.19792in" />
-<img src="media\image7.png" style="width:6.30208in;height:1.41667in" />
-<img src="media\image7.png" style="width:6.30208in;height:2.13542in" />
+![Tag aliasing example 1](media/type1aliasing.png)
 
 *Note: colours are intended as an visual aid and are not some type of
 identifier transmitted in the signal.*
@@ -58,19 +56,11 @@ overlapping.
 
 -   Multiple real tags with the **same burst interval** are detected.
 
--   Aliased tags also have the **same burst interval**, but a different
-    > **Lotek Tag ID**.
+-   Aliased tags also have the **same burst interval**, but a different **Lotek Tag ID**.
 
-<img src="media\image6.png" style="width:6.30208in;height:1.13661in" />
+![Tag aliasing example 2](media/type2aliasing.png)
 
-<img src="media\image6.png" style="width:6.30208in;height:1.17708in" />
-
-<img src="media\image6.png" style="width:6.30208in;height:1.16667in" />
-
-<img src="media\image6.png" style="width:6.30208in;height:1.14583in" />
-
-*Note: colours are intended as an visual aid and are not some type of
-identifier transmitted in the signal.*
+*Note: colours are intended as an visual aid and are not some type of identifier transmitted in the signal.*
 
 ## Type 3: False Burst Interval and Lotek Tag ID
 
@@ -87,10 +77,9 @@ pulses in a burst.
 
 -   Multiple real tags with the **same burst interval** are detected.
 
--   Aliased tags have a **different burst interval** but will likely
-    > have the **same Lotek Tag ID of one tag**.
+-   Aliased tags have a **different burst interval** but will likely have the **same Lotek Tag ID of one tag**.
 
-<img src="media\image2.png" style="width:6.30208in;height:5.5in" />
+![Tag aliasing example 3](media/type3aliasing.png)
 
 *Note: colours are intended as an visual aid and are not some type of
 identifier transmitted in the signal.*
@@ -108,16 +97,16 @@ to immediately determine they are false based on:
 
 #### Location
 
-> Is this somewhere we would expect the animal at this time of year?
+ Is this somewhere we would expect the animal at this time of year?
 
 #### Timing
 
-> What is the average flight speed between receivers?
+ What is the average flight speed between receivers?
 
 #### Other detections
 
 -   Are there multiple other tags detected at this station at the same
-    > time with the same ID **OR** burst interval?
+     time with the same ID **OR** burst interval?
 
 -   Are many tags *briefly* detected at a similar time?
 
@@ -138,30 +127,30 @@ of the four pulses which make up a burst. The standard deviation of a
 burst indicates the variation in pulses.
 
 -   Type 1 aliased detections should be made up of alternating bursts
-    > between two different tags. In this way, we should expect the
-    > overall signal strength of these tags to also alternate.
+     between two different tags. In this way, we should expect the
+     overall signal strength of these tags to also alternate.
 
 -   Type 2 aliased tag bursts are made up of a combination of pulses
-    > from multiple tags so those should all have a high signal strength
-    > standard deviation.
+     from multiple tags so those should all have a high signal strength
+     standard deviation.
 
 -   Type 3 aliased tag bursts alternate between a burst from a single
-    > tag and a burst made up of a combination of tags. These detections
-    > should alternate between low and high signal strength standard
-    > deviation.
+     tag and a burst made up of a combination of tags. These detections
+     should alternate between low and high signal strength standard
+     deviation.
 
 Keep in mind that if these tags are near one another (i.e., in a flock)
 you should expect a smaller difference in signal strength between tag.
 
 #### Frequency offset
 
-> The difference between the nominal frequency (e.g.: 166.380 MHz) and
-> the actual measured frequency of the tag pulses. This is measured in
-> kHz with an associated standard deviation.
->
-> We should expect similar results to signal strength measurements as
-> above, however proximity to other tagged individuals should not make a
-> difference.
+ The difference between the nominal frequency (e.g.: 166.380 MHz) and
+ the actual measured frequency of the tag pulses. This is measured in
+ kHz with an associated standard deviation.
+
+ We should expect similar results to signal strength measurements as
+ above, however proximity to other tagged individuals should not make a
+ difference.
 
 #### Number of skipped bursts
 
