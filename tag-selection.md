@@ -34,6 +34,8 @@ We recommend placing stations close to your tagging site, but in conditions wher
 
 If you want to learn more, see [Tag Aliasing](tag-aliasing.md).
 
+{% page-ref page="tag-aliasing.md" %}
+
 ## Tag Types
 
 Motus supports two types of uniquely coded radio transmitters: NanoTags™ manufactured by [Lotek Wireless Inc](http://lotek.com/), operating on frequencies 166.380 MHz \(Western Hemisphere\), 150.100 MHz \(Europe\), and 151.500 MHz \(Australia\), and LifeTag™ and PowerTags™ manufactured by [Cellular Tracking Technologies](http://www.celltracktech.com/) \(CTT\) operating on 434 MHz globally. The two tags use fundamentally different transmission and coding systems. Nanotags tags use amplitude modulation, or AM, whereas CTT tags us frequency modulation, or FM. Nanotags emit 4-bit pules that encode a unique ID in the time difference between these pulses, called Pulse-position Modulation \(PPM\). CTT use frequency-shift keying \(FSK\) which flips between two similar frequencies to encode a binary “1” or “0”, with a total of 64 of these bits per transmission.
