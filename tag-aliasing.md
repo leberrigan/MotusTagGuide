@@ -47,56 +47,64 @@ This can occur under similar conditions as type 2 aliasing but is much rarer sin
 
 _Note: colours are intended as an visual aid and are not some type of identifier transmitted in the signal._
 
-## How can we eliminate aliasing? \[STILL NEEDS WORK!\]
+## Identifying aliased detections
 
-At first it may seem like aliasing is an intrinsic and unavoidable aspect of this technology, but there exist several methods to overcome it.
+{% hint style="warning" %}
+Please note: This is guide is still in its draft stages. Some of the information presented here may be inaccurate.
+{% endhint %}
+
+Aliasing can be identified based on the signal characteristics, as well as the context of the detection.
 
 ### Context
 
 When aliased tag detections are recorded at a receiver, its often easy to immediately determine they are false based on:
 
-#### Location
+1. **Location:**
+  * Is this animal within its expected range?
 
-Is this somewhere we would expect the animal at this time of year?
 
-#### Timing
+2. **Timing:**
+  * What is the average flight speed between receivers?
+  * Is this animal where it's expected to be at this time of year?
 
-What is the average flight speed between receivers?
 
-#### Other detections
+3. **Other detections:**
+  * Are there multiple other tags detected at this station at the same time with the same Lotek ID **OR** burst interval?
+  * Are many tags _briefly_ detected at a similar time? (Likely noise)
 
-* Are there multiple other tags detected at this station at the same time with the same ID **OR** burst interval?
-* Are many tags _briefly_ detected at a similar time?
 
-### Tag Parameters
+Removing aliased detections based on context can be time consuming as it's not something that can be easily automated. We are working on developing such a filter which will flag detections based on these contexts.
 
-Some properties of tags can be used to further distinguish them from one another. Tags are built to a certain level of precision some of which are measured during tag registration. These measurements reveal slight differences between the characteristics of the signals emitted by each tag which can aid in identification. One of the best methods to eliminate false detections is to compare known real detections on the same antenna with suspicious detections using these properties.
 
-#### Signal strength
+### Signal characteristics
 
-The signal strength of a burst is the averaged signal strength of each of the four pulses which make up a burst. The standard deviation of a burst indicates the variation in pulses.
-
-* Type 1 aliased detections should be made up of alternating bursts between two different tags. In this way, we should expect the overall signal strength of these tags to also alternate.
-* Type 2 aliased tag bursts are made up of a combination of pulses from multiple tags so those should all have a high signal strength standard deviation.
-* Type 3 aliased tag bursts alternate between a burst from a single tag and a burst made up of a combination of tags. These detections should alternate between low and high signal strength standard deviation.
-
-Keep in mind that if these tags are near one another \(i.e., in a flock\) you should expect a smaller difference in signal strength between tag.
+Certain parameters of the signal received by the Motus station can be used to identify aliased detections with more confidence. Tags are built to a certain level of precision some of which are measured during tag registration. These measurements reveal slight differences between the characteristics of the signals emitted by each tag which can aid in identification. One of the best methods to eliminate false detections is to compare known real detections on the same antenna with suspicious detections using these properties.
 
 #### Frequency offset
 
-The difference between the nominal frequency \(e.g.: 166.380 MHz\) and the actual measured frequency of the tag pulses. This is measured in kHz with an associated standard deviation.
+The frequency offset measures average difference between the nominal frequency \(e.g.: 166.380 MHz\) and the actual measured frequency of the tag pulses. This is recorded in kHz with an associated standard deviation. Based on what we understand of aliased detections, we can hypothesize that:
 
-We should expect similar results to signal strength measurements as above, however proximity to other tagged individuals should not make a difference.
+* Type 1 aliased detections are made up of alternating bursts between two different tags. Therefore we should also expect the frequency offset of these tag bursts to alternate.
+* Type 2 aliased detections consist of bursts made up of combinations of pulses from multiple tags. Therefore we should expect a relatively high frequency offset standard deviation for these bursts.
+* Type 3 aliased detections alternate between a burst from a single tag and a burst made up from multiple of tags. Therefore these detections should alternate between low and high frequency offset standard deviation.
+
+#### Signal strength
+
+The signal strength of a burst is the averaged signal strength of each of the four pulses which make up a burst. Thus the signal strength standard deviation reflects the variation in the pulses within the burst. This is recorded similarly to frequency offset and in theory we should expect similar results to signal strength measurements as above. However, proximity to other tagged individuals theoretically decreases the relative difference in signal strength between tags. That means that for certain colonial or gregarious species you should expect a smaller difference in signal strength between tag. Unfortunately, it appears that aliasing is also worse in gregarious and colonial species, so signal strength may not be the most effective parameter to begin with. Further investigation is needed.
 
 #### Number of skipped bursts
 
-In noisy environments or with weak signal, some tag bursts may not be received entirely. We allow for a maximum of 60 bursts to be missed to avoid losing too many detections. For instance, if a 4.7 s tag has two bursts detected with three bursts missed in between them, we would expect there to be 4.7 \* \(1 + 3\) = 18.8 s gap between the two bursts.
+In noisy environments or with a weak signal, some tag bursts may not be received entirely. We allow for a maximum of 60 bursts to be missed to avoid losing too many detections. For instance, if a 4.7 s tag has two bursts detected with three bursts missed in between them, we would expect there to be 4.7 \* \(1 + 3\) = 18.8 s gap between the two bursts. This makes it possible to give a Motus ID to tags that would otherwise be considered ambiguous. Unfortunately, this also means it allows for more false detections to be filtered through, either as a result of noise or from aliasing. There can be a maximum of 60 skipped bursts.
+
+In general, we expect the number of skipped bursts to be proportional to the probability of a false detection, but this has not been fully investigated. It's likely that some combination of signal strength, signal-to-noise ratio, and hourly pulse counts are important to look in concert with skipped bursts to better identify false detections.
 
 #### Burst interval slop
 
-The maximum allowed variation in a burst interval. We filter out all data with a slop greater than 4 ms.
+The burst interval slop is the difference between the observed and expected burst length. The *tag finder algorithm* filters out all data with a slop greater than 4 ms plus 1 ms for each skipped burst if there are any.
+
+With any case of tag aliasing, we expect burst slop to drift over time. This is because each tag has a certain amount of variation in the burst interval (burst interval standard deviation). The mean burst interval is also slightly different between tags, even if they are made to the same specification. With this understanding, we can hypothesize that:
+* Type 1 aliased detections are made up of alternating bursts between two different tags. Therefore we should expect the burst interval slop to increase and/or decrease with time, as the tags fall in and out of sync.
 
 #### Run length
 
-A ‘run’ consists of a collection of bursts. The length of the run \(_runLen_\) is a count of these bursts, not the length of time. A run may include gaps where bursts were skipped and it will terminate once more than 60 bursts have been skipped. False detections as a result of radio noise usually have very short run lengths; however, aliased tags are more likely to have long run lengths, so this is not always the most useful parameter to look at, but they should still be noticeably shorter than true detections. Since runs can include skipped bursts, it can be helpful to calculate the longest group of consecutive bursts within each run \(_longRun_\)and compare it to the maximum number of bursts that could have been detected during the run’s time interval \(_maxRun_\). You should expect to see the ratio of _longRun_ to _runLen_ and the ratio of _maxRun_ to _runLen_ to be much smaller for aliased tags than real tags.
-
+A ‘run’ consists of a collection of bursts. The length of the run (*runLen*) is a count of these bursts, not the length of time. A run may include gaps where bursts were skipped and it will terminate once more than 60 bursts have been skipped. False detections as a result of radio noise usually have very short run lengths; however, aliased tags are more likely to have long run lengths (depending on source), so this is not always the most useful parameter to look at, but they should still be noticeably shorter than true detections. Since runs can include skipped bursts, it can be helpful to calculate the longest group of consecutive bursts within each run (*longRun*)and compare it to the maximum number of bursts that could have been detected during the run’s time interval (*maxRun*). You should expect to see the ratio of _longRun_ to _runLen_ and the ratio of *maxRun* to *runLen* to be much smaller for aliased tags than real tags.
