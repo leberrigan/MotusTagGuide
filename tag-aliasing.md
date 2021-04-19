@@ -1,5 +1,7 @@
 # Tag Aliasing
 
+## What is tag aliasing?
+
 Tag aliasing is a method by which false detections of a tag can occur because of overlapping signals being received from multiple real tags. To understand tag aliasing, it is important to understand how tags encode their unique ID and how we interpret the signals they produce. This document only refers to Lotek NanoTags as we have not had reports of aliasing with CTT tags. Before reading this section, make sure you have a solid understanding of [How tags work](how-tags-work.md).
 
 Tag aliasing can occur when multiple real tags are transmitting tag pulses at the same Motus station and over the same period of time. An aliased tag results in an erroneous **Motus Tag ID** being allocated to a set of **tag pulses**.
@@ -60,21 +62,15 @@ Aliasing can be identified based on the signal characteristics, as well as the c
 When aliased tag detections are recorded at a receiver, its often easy to immediately determine they are false based on:
 
 1. **Location:**
-  * Is this animal within its expected range?
-
-
+   * Is this animal within its expected range?
 2. **Timing:**
-  * What is the average flight speed between receivers?
-  * Is this animal where it's expected to be at this time of year?
-
-
+   * What is the average flight speed between receivers?
+   * Is this animal where it's expected to be at this time of year?
 3. **Other detections:**
-  * Are there multiple other tags detected at this station at the same time with the same Lotek ID **OR** burst interval?
-  * Are many tags _briefly_ detected at a similar time? (Likely noise)
-
+   * Are there multiple other tags detected at this station at the same time with the same Lotek ID **OR** burst interval?
+   * Are many tags _briefly_ detected at a similar time? \(Likely noise\)
 
 Removing aliased detections based on context can be time consuming as it's not something that can be easily automated. We are working on developing such a filter which will flag detections based on these contexts.
-
 
 ### Signal characteristics
 
@@ -100,11 +96,41 @@ In general, we expect the number of skipped bursts to be proportional to the pro
 
 #### Burst interval slop
 
-The burst interval slop is the difference between the observed and expected burst length. The *tag finder algorithm* filters out all data with a slop greater than 4 ms plus 1 ms for each skipped burst if there are any.
+The burst interval slop is the difference between the observed and expected burst length. The _tag finder algorithm_ filters out all data with a slop greater than 4 ms plus 1 ms for each skipped burst if there are any.
 
-With any case of tag aliasing, we expect burst slop to drift over time. This is because each tag has a certain amount of variation in the burst interval (burst interval standard deviation). The mean burst interval is also slightly different between tags, even if they are made to the same specification. With this understanding, we can hypothesize that:
+With any case of tag aliasing, we expect burst slop to drift over time. This is because each tag has a certain amount of variation in the burst interval \(burst interval standard deviation\). The mean burst interval is also slightly different between tags, even if they are made to the same specification. With this understanding, we can hypothesize that:
+
 * Type 1 aliased detections are made up of alternating bursts between two different tags. Therefore we should expect the burst interval slop to increase and/or decrease with time, as the tags fall in and out of sync.
 
 #### Run length
 
-A ‘run’ consists of a collection of bursts. The length of the run (*runLen*) is a count of these bursts, not the length of time. A run may include gaps where bursts were skipped and it will terminate once more than 60 bursts have been skipped. False detections as a result of radio noise usually have very short run lengths; however, aliased tags are more likely to have long run lengths (depending on source), so this is not always the most useful parameter to look at, but they should still be noticeably shorter than true detections. Since runs can include skipped bursts, it can be helpful to calculate the longest group of consecutive bursts within each run (*longRun*)and compare it to the maximum number of bursts that could have been detected during the run’s time interval (*maxRun*). You should expect to see the ratio of _longRun_ to _runLen_ and the ratio of *maxRun* to *runLen* to be much smaller for aliased tags than real tags.
+A ‘run’ consists of a collection of bursts. The length of the run \(_runLen_\) is a count of these bursts, not the length of time. A run may include gaps where bursts were skipped and it will terminate once more than 60 bursts have been skipped. False detections as a result of radio noise usually have very short run lengths; however, aliased tags are more likely to have long run lengths \(depending on source\), so this is not always the most useful parameter to look at, but they should still be noticeably shorter than true detections. Since runs can include skipped bursts, it can be helpful to calculate the longest group of consecutive bursts within each run \(_longRun_\)and compare it to the maximum number of bursts that could have been detected during the run’s time interval \(_maxRun_\). You should expect to see the ratio of _longRun_ to _runLen_ and the ratio of _maxRun_ to _runLen_ to be much smaller for aliased tags than real tags.
+
+## **How to Avoid Tag Aliasing**
+
+{% hint style="warning" %}
+_Aliasing can cause false detections of your tags as well as tags from other projects. Removing them usually involves additional validation steps which can be difficult and time consuming for the researcher._
+{% endhint %}
+
+### **When does aliasing typically occur?**
+
+Aliasing typically occurs when there are a large number of active tags in a small area. Because of this, certain species and tagging conditions are more likely to cause aliasing due to their behaviour. For researchers studying colonial or gregarious species \(i.e.; swallows, bats, and shorebirds, etc.\), they should be especially aware of this problem. We anticipate aliasing to occur in any colony where there are more than 10 active tags at once with the same burst interval and that interval is less than 20 seconds.
+
+### **How to identify aliased detections**
+
+To learn more about tag aliasing and how to identify false detections, see [Tag Aliasing](tag-aliasing.md#identifying-aliased-detections).
+
+### **How to avoid tag aliasing**
+
+#### _Strategic tag deployment_
+
+To help mitigate aliasing, we recommend keeping numbers low at any given tagging site. This can be done by staggering deployments, either spatially or temporally. Most aliasing is caused by tags which have the same burst interval but a different Lotek ID. That means if you have more than one burst interval in your selection of tags, you can deploy more tags at any given site with a reduced risk of aliasing. However, _do not deploy more than one tag with the same Lotek ID, even if they have different burst intervals!_
+
+{% hint style="info" %}
+You can help mitigate tag aliasing by staggering the activation times so fewer burst overlap with one another. This is more difficult with shorter burst intervals.
+{% endhint %}
+
+#### _Strategic station placement_
+
+We recommend placing stations close to your tagging site, but in conditions where there is a high potential for aliasing that may become problematic. In such cases, we suggest placing the station further away from the tagging site to reduce the number of overlapping detections.
+

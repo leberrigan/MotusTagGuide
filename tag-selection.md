@@ -18,23 +18,11 @@ Go to the [receivers map](https://motus.org/data/receiversMap) to see all curren
 
 ## Avoiding Tag Aliasing
 
-Aliasing can cause false detections of your tags as well as tags from other projects. Removing them usually involves additional validation steps which can be difficult and time consuming for the researcher.
-
-### What is aliasing and how does it occur?
-
 Aliasing is caused by multiple tags emitting a signal at the same time and overlapping. Sometimes these interacting signals can produce a pattern which matches a different tag that is not actually present. This is due to the nature of how the unique ID is encoded in the signal. However, the parameters used to define these IDs are quite stringent, making aliasing an issue only in specific conditions.
 
-Aliasing typically occurs when there are a large number of active tags in a small area. Because of this, certain species and tagging conditions are more likely to cause aliasing due to their behaviour. For researchers studying colonial or gregarious species such as swallows, bats, and shorebirds, they should be especially aware of this problem. _We anticipate aliasing to occur in any colony where there are more than 10 active tags at once with the same burst interval and that interval is less than 20 seconds._
+Aliasing can cause false detections of your tags as well as tags from other projects. Removing them usually involves additional validation steps which can be difficult and time consuming for the researcher. One method to help mitigate tag aliasing is to select tags with longer burst intervals as this reduces the chances of two signals overlapping.
 
-The important thing is to try to keep numbers low at any given tagging site. This can be done by staggering deployments, either spatially or temporally. Most aliasing is caused by tags which have the same burst rate but a different Lotek ID. That means if you have more than one burst rate in your selection of tags, you can deploy more tags at any given site with a reduced risk of aliasing. However, _do not deploy more than one tag with the same Lotek ID, even if they have different burst rates!_
-
-### Strategic station placement
-
-We recommend placing stations close to your tagging site, but in conditions where there is a high potential for aliasing that may become problematic. In such cases, we suggest placing the station further away from the tagging site to reduce the number of overlapping detections.
-
-If you want to learn more, see [Tag Aliasing](tag-aliasing.md).
-
-{% page-ref page="tag-aliasing.md" %}
+[**Read more about tag aliasing here**](tag-aliasing.md#how-to-avoid-tag-aliasing-1)\*\*\*\*
 
 ## Tag Types
 
