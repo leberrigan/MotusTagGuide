@@ -127,7 +127,7 @@ To learn more about tag aliasing and how to identify false detections, see [Tag 
 To help mitigate aliasing, we recommend keeping numbers low at any given tagging site. This can be done by staggering deployments, either spatially or temporally. Most aliasing is caused by tags which have the same burst interval but a different Lotek ID. That means if you have more than one burst interval in your selection of tags, you can deploy more tags at any given site with a reduced risk of aliasing. However, _do not deploy more than one tag with the same Lotek ID, even if they have different burst intervals!_
 
 {% hint style="info" %}
-You can help mitigate tag aliasing by staggering the activation times so fewer burst overlap with one another. This is more difficult with shorter burst intervals.
+You can help mitigate tag aliasing by staggering the activation times so fewer burst overlap with one another. This is easier to do if you order tags with long burst intervals.
 {% endhint %}
 
 #### _Strategic station placement_
