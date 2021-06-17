@@ -1,4 +1,4 @@
-# Retreiving Lost Tags
+# Retrieving Lost Tags
 
 ## Manual tracking basics
 

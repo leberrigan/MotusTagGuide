@@ -6,5 +6,5 @@
 * [Tag Selection](tag-selection.md)
 * [Tag Deployment](tag-deployment.md)
 * [Tag Aliasing](tag-aliasing.md)
-* [Retreiving Lost Tags](tag-retreival.md)
+* [Retrieving Lost Tags](tag-retrieval.md)
 
