@@ -26,7 +26,7 @@ Aliasing can cause false detections of your tags as well as tags from other proj
 
 ## Tag Types
 
-Motus supports two types of uniquely coded radio transmitters: NanoTags™ manufactured by [Lotek Wireless Inc](http://lotek.com/), operating on frequencies 166.380 MHz \(Western Hemisphere\), 150.100 MHz \(Europe\), and 151.500 MHz \(Australia\), and LifeTag™ and PowerTags™ manufactured by [Cellular Tracking Technologies](http://www.celltracktech.com/) \(CTT\) operating on 434 MHz globally. The two tags use fundamentally different transmission and coding systems. Nanotags tags use amplitude modulation, or AM, whereas CTT tags us frequency modulation, or FM. Nanotags emit 4-bit pules that encode a unique ID in the time difference between these pulses, called Pulse-position Modulation \(PPM\). CTT use frequency-shift keying \(FSK\) which flips between two similar frequencies to encode a binary “1” or “0”, with a total of 64 of these bits per transmission.
+Motus supports two types of uniquely coded radio transmitters: NanoTags™ manufactured by [Lotek Wireless Inc](http://lotek.com/), operating on frequencies 166.380 MHz \(Western Hemisphere\), 150.100 MHz \(Europe\), and 151.500 MHz \(Australia\), and LifeTag™, PowerTag™, and HybridTag™ manufactured by [Cellular Tracking Technologies](http://www.celltracktech.com/) \(CTT\) operating on 434 MHz globally. The two tags use fundamentally different transmission and coding systems. Nanotags tags use amplitude modulation, or AM, whereas CTT tags us frequency modulation, or FM. Nanotags emit 4-bit pules that encode a unique ID in the time difference between these pulses, called Pulse-position Modulation \(PPM\). CTT use frequency-shift keying \(FSK\) which flips between two similar frequencies to encode a binary “1” or “0”, with a total of 64 of these bits per transmission.
 
 The distribution of stations listening for either tag is not uniform, so collaborators should consult the [Motus Receiver Map](https://motus.org/data/receiversMap/) to confirm which frequency stations are operating on throughout the network. When communicating with Lotek or CTT, be sure to explicitly state that you want your tags/system to be compatible with Motus.
 
@@ -39,33 +39,52 @@ There is a lot of detail about these two tags that can’t all be explored here,
     <tr>
       <th style="text-align:left"></th>
       <th style="text-align:left">
-        <p><a href="https://www.lotek.com/products/nanotags/"><b>Lotek Nanotag</b></a>
-        </p>
-        <p>
-          <img src=".gitbook/assets/lotek-nanotag.jpg" alt="Lotek Nanotag" />
-        </p>
+        <a href="https://www.lotek.com/products/nanotags/">
+          <p>
+            <b>Lotek Nanotag</b>
+          </p>
+          <p>
+            <img src=".gitbook/assets/lotek-nanotag.jpg" alt="Lotek Nanotag" />
+          </p>
+        </a>
       </th>
       <th style="text-align:left">
-        <p><b>Lotek Nanotag Solar</b>
-        </p>
-        <p>
-          <img src=".gitbook/assets/lotek-nanotag-solar.jpg" alt="Lotek Nanotag Solar"
-          />
-        </p>
+        <a href="https://www.lotek.com/products/solar-nanotags-coded-vhf-for-birds/">
+          <p>
+            <b>Lotek Nanotag Solar</b>
+          </p>
+          <p>
+            <img src=".gitbook/assets/lotek-nanotag-solar.jpg" alt="Lotek Nanotag Solar"
+            />
+          </p>
+        </a>
       </th>
       <th style="text-align:left">
-        <p><b>CTT LifeTags</b>
-        </p>
-        <p>
-          <img src=".gitbook/assets/ctt-lifetag.png" alt="CTT LifeTags" />
-        </p>
+        <a href="https://celltracktech.com/products/tag-system/lifetag/">
+          <p><b>CTT LifeTags</b>
+          </p>
+          <p>
+            <img src=".gitbook/assets/ctt-lifetag.png" alt="CTT LifeTags" />
+          </p>
+        </a>
       </th>
       <th style="text-align:left">
-        <p><b>CTT PowerTags</b>
-        </p>
-        <p>
-          <img src=".gitbook/assets/ctt-powertag.png" alt="CTT PowerTags" />
-        </p>
+        <a href="https://celltracktech.com/products/tag-system/powertag/">
+          <p><b>CTT PowerTags</b>
+          </p>
+          <p>
+            <img src=".gitbook/assets/ctt-powertag.png" alt="CTT PowerTags" />
+          </p>
+        </a>
+      </th>
+      <th style="text-align:left">
+        <a href="https://celltracktech.com/about-us/contact-us/">
+          <p><b>CTT HybridTags</b>
+          </p>
+          <p>
+            <img src=".gitbook/assets/ctt-hybridtag.png" alt="CTT HybridTags" />
+          </p>
+        </a>
       </th>
     </tr>
   </thead>
@@ -81,11 +100,14 @@ There is a lot of detail about these two tags that can’t all be explored here,
       </td>
       <td style="text-align:left"><b>CTT</b>
       </td>
+      <td style="text-align:left"><b>CTT</b>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">Frequency</td>
       <td style="text-align:left">150.1, 151.5, or 166.380 MHz</td>
       <td style="text-align:left">150.1, 151.5, or 166.38 MHz</td>
+      <td style="text-align:left">434 MHz</td>
       <td style="text-align:left">434 MHz</td>
       <td style="text-align:left">434 MHz</td>
     </tr>
@@ -95,13 +117,15 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td style="text-align:left">Unlimited</td>
       <td style="text-align:left">Unlimited</td>
       <td style="text-align:left">Long (180 d to yrs)</td>
+      <td style="text-align:left">Unlimited</td>
     </tr>
     <tr>
       <td style="text-align:left">Daily active period</td>
       <td style="text-align:left">24/7 or alternate 12-hour on/off</td>
       <td style="text-align:left">24/7 (battery and solar powered)</td>
-      <td style="text-align:left">Only in direct sunlight (solar powered)</td>
+      <td style="text-align:left">Needs sufficient light; works in low light conditions and indirect light.</td>
       <td style="text-align:left">24/7</td>
+      <td style="text-align:left">24/7 (battery and solar powered)</td>
     </tr>
     <tr>
       <td style="text-align:left">Weight</td>
@@ -109,6 +133,7 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td style="text-align:left">1.4 g and up</td>
       <td style="text-align:left">0.44 g and up</td>
       <td style="text-align:left">0.33 g and up</td>
+      <td style="text-align:left">0.63 g and up</td>
     </tr>
     <tr>
       <td style="text-align:left">Smallest bird (%3 body weight)</td>
@@ -116,13 +141,15 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td style="text-align:left">46.7 g</td>
       <td style="text-align:left">14.7 g</td>
       <td style="text-align:left">11.0 g</td>
+      <td style="text-align:left">21.0 g</td>
     </tr>
     <tr>
       <td style="text-align:left">Possible number of unique tags</td>
       <td style="text-align:left">&gt;36,000*</td>
       <td style="text-align:left">&gt;36,000*</td>
       <td style="text-align:left">~4 billion</td>
-      <td style="text-align:left">~ 4 billion</td>
+      <td style="text-align:left">~4 billion</td>
+      <td style="text-align:left">~4 billion</td>
     </tr>
     <tr>
       <td style="text-align:left">Burst intervals</td>
@@ -131,26 +158,32 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td
       style="text-align:left">2 seconds (configurable)</td>
         <td style="text-align:left">Programmable: from 1 sec up</td>
+        <td style="text-align:left">Programmable: from 5 sec up</td>
     </tr>
     <tr>
       <td style="text-align:left">Current number of compatible Motus Stations</td>
       <td style="text-align:left">
-        <p>900+</p>
+        <p>1200+</p>
         <p><a href="https://motus.org/data/receiversMap/">See receiver map for distribution</a>
         </p>
       </td>
       <td style="text-align:left">
-        <p>90+</p>
+        <p>1200+</p>
         <p><a href="https://motus.org/data/receiversMap/">See receiver map for distribution</a>
         </p>
       </td>
       <td style="text-align:left">
-        <p>79+</p>
+        <p>487+</p>
         <p><a href="https://motus.org/data/receiversMap/">See receiver map for distribution</a>
         </p>
       </td>
       <td style="text-align:left">
-        <p>79+</p>
+        <p>487+</p>
+        <p><a href="https://motus.org/data/receiversMap/">See receiver map for distribution</a>
+        </p>
+      </td>
+      <td style="text-align:left">
+        <p>487+</p>
         <p><a href="https://motus.org/data/receiversMap/">See receiver map for distribution</a>
         </p>
       </td>
@@ -161,11 +194,13 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td style="text-align:left">SensorStation with FUNcube Dongle only</td>
       <td style="text-align:left">Yes</td>
       <td style="text-align:left">Yes</td>
+      <td style="text-align:left">Yes</td>
     </tr>
     <tr>
       <td style="text-align:left">Compatible with Lotek Receivers</td>
       <td style="text-align:left">Yes</td>
       <td style="text-align:left">Yes</td>
+      <td style="text-align:left">No</td>
       <td style="text-align:left">No</td>
       <td style="text-align:left">No</td>
     </tr>
@@ -175,6 +210,7 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td style="text-align:left">With FUNcube dongle only</td>
       <td style="text-align:left">With CTT Motus Adapter only</td>
       <td style="text-align:left">With CTT Motus Adapter only</td>
+      <td style="text-align:left">With CTT Motus Adapter only</td>
     </tr>
     <tr>
       <td style="text-align:left">Price</td>
@@ -182,6 +218,7 @@ There is a lot of detail about these two tags that can’t all be explored here,
       <td style="text-align:left">~$200 USD</td>
       <td style="text-align:left">~$200 USD</td>
       <td style="text-align:left">~$200 USD</td>
+      <td style="text-align:left">~$250 USD</td>
     </tr>
     <tr>
       <td style="text-align:left">Discount</td>
@@ -195,9 +232,12 @@ There is a lot of detail about these two tags that can’t all be explored here,
         <p>5% for 20+</p>
         <p>10% for 30+</p>
       </td>
+      <td style="text-align:left">
+        <p>5% for 20+</p>
+        <p>10% for 30+</p>
+      </td>
     </tr>
   </tbody>
 </table>
 
 **\* This number is calculated by multiplying the number of unique ID’s emitted by Lotek tags \(517\) with the number of unique burst intervals available \(70\). These burst intervals range from 2.3 to 39.7 seconds, which corresponds to the number of primes between 23 and 397 such that no two burst intervals overlap with one another.**
-
