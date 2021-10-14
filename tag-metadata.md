@@ -73,3 +73,13 @@ Tags that were not deployed during the anticipated tagging period can be stored 
 {% hint style="info" %}
 Undeployed tags should be stored with the correct conditions. See [**Tag Storage**](tag-storage.md) for more information.
 {% endhint %}
+
+## Consequences of bad metadata
+
+Bad metadata to be information related to deployments which is either missing or inaccurate. We can use the example scenario above to predict what might happen when metadata isn't kept up to date. 
+
+* If there is no deployment data for a tag, _tag finder_ will assume the tag has expired and will stop searching for it long before it should. In our example, the default deployment period has no overlap with the actual active period, meaning it will only search for the tag before it was actually ever deployed. Therefore, no detections would exist for this tag.
+* If only an anticipated deployment date exists, there may be some overlap with the actual deployment period, but there could still be a lot of data missing from the end of the tag lifespan.
+* If there are left over tags after the field season or if a tag is recovered and the existing deployments aren't terminated, manufacturers might reissue the tags which can result in ambiguous detections. That means there could be two tags deployed at the same time that appear identical to each other deployed at the same time, making it difficult or impossible to accurately identify the individual.
+
+![](.gitbook/assets/tag-metadata-ex5.png)
