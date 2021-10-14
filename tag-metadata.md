@@ -11,7 +11,7 @@ description: >-
 
 ### Tag registration
 
-All tags used with Motus [must first be registered.](tag-metadata.md#tag-registration)
+All tags used with Motus [must first be registered.](tag-registration.md)
 
 ### Tag deployments
 
