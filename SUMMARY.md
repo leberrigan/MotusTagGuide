@@ -7,5 +7,11 @@
 * [Tag Deployment](tag-deployment.md)
 * [Tag Aliasing](tag-aliasing.md)
 * [Retrieving Lost Tags](tag-retrieval.md)
-* [Appendix A: Tag Harness Sizes](appendix-a-tag-harness-sizes.md)
 * [Tag Storage](tag-storage.md)
+* [Tag Registration](tag-registration.md)
+* [Tag Metadata](tag-metadata.md)
+
+## Appendix
+
+* [Tag Harness Sizes](appendix/appendix-a-tag-harness-sizes.md)
+* [Tag Finder](appendix/tag-finder.md)

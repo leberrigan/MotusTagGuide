@@ -7,7 +7,11 @@ description: >-
 
 # Tag Storage
 
-**Storing battery-powered tags**
+## Tag metadata
+
+One of the most important aspects of tag storage is ensuring your tag metadata is up to date. Motus needs to know which tags are not deployed, otherwise they might be reissued by the manufacturer which can have bad consequences like ambiguous detections. W
+
+## **Storing battery-powered tags**
 
 The steps below follow the best available guidance in consultation with the tag manufacturers:
 
